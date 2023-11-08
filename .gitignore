@@ -1,7 +1,8 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/node_modules
+/client/node_modules
+/server/node_modules
 /.pnp
 .pnp.js
 .yarn/install-state.gz
@@ -10,7 +11,7 @@
 /coverage
 
 # next.js
-/.next/
+/client/.next/
 /out/
 
 # production
@@ -26,11 +27,15 @@ yarn-debug.log*
 yarn-error.log*
 
 # local env files
-.env*.local
+/client/.env*.local
+/client/.env*
+/server/.env*.local
+/server/.env*
 
 # vercel
 .vercel
 
 # typescript
 *.tsbuildinfo
-next-env.d.ts
+/client/next-env.d.ts
+/server/next-env.d.ts
