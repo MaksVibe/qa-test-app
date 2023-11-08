@@ -1,0 +1,13 @@
+# vscode settings
+.vscode/*
+/node_modules
+
+# temp folders
+_legacy*
+_backup*
+_temp*
+
+# temp files
+*._legacy*
+*._backup*
+*._temp*
