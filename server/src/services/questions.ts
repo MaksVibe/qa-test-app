@@ -1,8 +1,8 @@
-import { QuestionTechnical, QuestionTheory, Question } from '../db/questionsModel';
+import { QuestionTechnical, QuestionTheory, QuestionType } from '../db/questionsModel';
 
-function getRandomQuestions(questions: Question[]): Question[] {
+function getRandomQuestions(questions: QuestionType[]): QuestionType[] {
   const numQuestionsArr: Set<number> = new Set();
-  const questionsTwelve: Question[] = [];
+  const questionsTwelve: QuestionType[] = [];
 
   while (numQuestionsArr.size < 12) {
     const random = Math.floor(Math.random() * questions.length);
@@ -27,7 +27,7 @@ function countCorrectAnswers(answers: any[], data: any[]): number {
   return result;
 }
 
-async function getUserQuestions(testingType: { type: string }): Promise<Question[]> {
+export const getUserQuestions = async (testingType: { type: string }): Promise<QuestionType[]> => {
   const { type } = testingType;
   console.log('type :>> ', type);
 
@@ -42,9 +42,9 @@ async function getUserQuestions(testingType: { type: string }): Promise<Question
   }
 
   return [];
-}
+};
 
-const checkQuestions = async (type: string, answers: any[]): Promise<number> => {
+export const checkQuestions = async (type: string, answers: any[]): Promise<number> => {
   console.log('(type === "theory")', type === 'theory');
   if (type === 'theory') {
     const questions = await QuestionTheory.find({}, { _id: 1, rightAnswer: 1 });
@@ -57,9 +57,4 @@ const checkQuestions = async (type: string, answers: any[]): Promise<number> => 
   }
 
   return 0;
-};
-
-export = {
-  getUserQuestions,
-  checkQuestions,
 };
